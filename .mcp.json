@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "ssh": {
+      "command": "npx",
+      "args": ["-y", "@idletoaster/ssh-mcp-server@latest"],
+      "env": {}
+    }
+  }
+}
