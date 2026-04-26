@@ -39,17 +39,17 @@ A learning-focused, production-grade ETL pipeline for financial market data anal
 
 ## Data Source
 
-**Yahoo Finance via Hugging Face** — `bwzheng2010/yahoo-finance-data` (~1-3 GB total, 20 parquet files)
+**Yahoo Finance via Hugging Face** — `bwzheng2010/yahoo-finance-data` (~2.1 GB total, 18 parquet files)
 
 | Category | Files |
 |----------|-------|
-| Price & Market | `stock_prices`, `treasury_yield`, `exchange_rate` |
-| Fundamentals | `stock_income`, `stock_balance_sheet`, `stock_cash_flow`, `stock_profile`, `stock_officers` |
-| Earnings | `stock_earning_calendar`, `stock_earning_estimate`, `stock_revenue_estimate`, `stock_earning_call_transcripts` |
-| Market Activity | `stock_dividends`, `stock_splits`, `stock_news`, `stock_shares_outstanding` |
-| Analytics | `stock_key_stats`, `stock_summary`, `stock_tailing_eps`, `stock_revenue_breakdown` |
+| Price & Market | `stock_prices`, `daily_treasury_yield`, `exchange_rate` |
+| Fundamentals | `stock_statement`, `stock_profile`, `stock_officers` |
+| Earnings | `stock_earning_calendar`, `stock_earning_estimates`, `stock_revenue_estimates`, `stock_earning_call_transcripts` |
+| Market Activity | `stock_dividend_events`, `stock_split_events`, `stock_news`, `stock_shares_outstanding` |
+| Analytics | `stock_historical_eps`, `stock_summary`, `stock_tailing_eps`, `stock_revenue_breakdown` |
 
-Source updates files in place with same names.
+All filenames are `.parquet`. Source updates files in place with same names.
 
 ## Key Design Decisions
 
