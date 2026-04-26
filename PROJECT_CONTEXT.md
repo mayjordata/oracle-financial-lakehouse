@@ -149,12 +149,14 @@ Workflow: edit locally → push to GitHub → pull on OCI instance → run there
 - Consolidated into single production script
 - Did "clean slate" reorganization: deleted old date-based folders, repopulated with new structure
 
-### 🔄 Phase 1B: Transform (In Progress)
-**Scripts**:
+### 🔄 Phase 1B: Transform (Not Started)
+**Status**: No transform code has been written yet. The scripts described below are planned, not implemented.
+
+**Planned scripts**:
 - `etl/transform/financial_data_transformer.py` — Core framework
 - `etl/transform/stock_analysis_pipeline.py` — Analysis workflows
 
-**Implemented (untested)**:
+**Planned capabilities** (to be implemented):
 - OCI client integration with caching
 - Data loading from Object Storage
 - Cleaning utilities (deduplication, outlier removal, type coercion)
@@ -164,6 +166,7 @@ Workflow: edit locally → push to GitHub → pull on OCI instance → run there
 - Composite "health score" calculation
 
 **TODO**:
+- Write transform framework and pipeline scripts
 - Test on real data
 - Generate first curated datasets
 - Data quality validation
@@ -184,7 +187,7 @@ Workflow: edit locally → push to GitHub → pull on OCI instance → run there
 - Real-time streaming integration
 - Dashboards (Oracle Analytics Cloud or custom)
 
-## Transformations Catalog
+## Transformations Catalog (Planned)
 
 ### Technical Indicators (applied to `stock_prices`)
 - Simple Moving Averages: 5, 20, 50, 200-day
@@ -251,12 +254,20 @@ oci compute instance get --instance-id "$INSTANCE_OCID" --query 'data."lifecycle
 | Networking | Minimal |
 | **Total** | **~$5-10/month** |
 
+## Instance Layout
+
+The finance-etl instance has two directories:
+
+- **`~/finance-etl/`** — Legacy directory where the ETL was originally developed (pre-git). Contains the production script, old iteration scripts in `backup_old_scripts/`, and historical logs/reports. Keep as reference; do not use for new work.
+- **`~/oracle-financial-lakehouse/`** — Git-tracked repo clone. All future development and ETL runs should use this directory.
+
 ## Known Issues & Quirks
 
 1. **`stock_shares_outstanding.parquet` was missing** from the original ETL file list — has been added manually but watch for similar omissions if Hugging Face dataset changes.
 2. **Memory pressure on smaller instances** — original 24 GB instance hit memory bottlenecks; 32 GB resolved this for current dataset size.
 3. **Public IP may change** when instance is stopped/started unless reserved.
-4. **No automated tests yet** — high priority for Phase 1B completion.
+4. **No automated tests yet** — high priority for Phase 1B.
+5. **Transform scripts do not exist yet** — Phase 1B descriptions in earlier docs were aspirational. Need to be built from scratch.
 
 ## Common Troubleshooting
 
