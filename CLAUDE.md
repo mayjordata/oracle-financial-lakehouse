@@ -30,7 +30,7 @@ A learning-focused, production-grade ETL pipeline for financial market data anal
   - **`~/oracle-financial-lakehouse/`** — git-tracked repo clone (use this)
   - **`~/finance-etl/`** — legacy pre-git directory (reference only)
 - **Object Storage Bucket:** `finance-raw`
-  - `raw_data/yahoo_finance_huggingface/` — 20 parquet files
+  - `raw_data/yahoo_finance_huggingface/` — 15 parquet files (current), 18 previously
   - `curated_data/` — transform outputs (empty, not yet populated)
 - **Region:** us-phoenix-1 (PHX)
 - **Finance Compartment:** `ocid1.compartment.oc1..aaaaaaaaud24osjofbgmzfkupno2rj5xsrsdn7kl5gdvz6kssrzmnaoraefq`
@@ -39,17 +39,17 @@ A learning-focused, production-grade ETL pipeline for financial market data anal
 
 ## Data Source
 
-**Yahoo Finance via Hugging Face** — `bwzheng2010/yahoo-finance-data` (~2.1 GB total, 18 parquet files)
+**Yahoo Finance via Hugging Face** — mirror: `bwzheng2010/yahoo-finance-data`, original: `defeatbeta/yahoo-finance-data` (~3.22 GB total, 15 parquet files, last updated 2026-04-17)
 
 | Category | Files |
 |----------|-------|
 | Price & Market | `stock_prices`, `daily_treasury_yield`, `exchange_rate` |
 | Fundamentals | `stock_statement`, `stock_profile`, `stock_officers` |
-| Earnings | `stock_earning_calendar`, `stock_earning_estimates`, `stock_revenue_estimates`, `stock_earning_call_transcripts` |
+| Earnings | `stock_earning_calendar`, `stock_earning_call_transcripts`, `stock_tailing_eps` |
 | Market Activity | `stock_dividend_events`, `stock_split_events`, `stock_news`, `stock_shares_outstanding` |
-| Analytics | `stock_historical_eps`, `stock_summary`, `stock_tailing_eps`, `stock_revenue_breakdown` |
+| Filings & Analysis | `stock_sec_filing`, `stock_revenue_breakdown` |
 
-All filenames are `.parquet`. Source updates files in place with same names.
+All filenames are `.parquet`. Source updates files in place with same names. **Note:** maintainer makes silent breaking changes with no changelog — audit periodically against live dataset. Removed 2026-04-27: `stock_summary`, `stock_historical_eps`, `stock_earning_estimates`, `stock_revenue_estimates`. Added: `stock_sec_filing`.
 
 ## Key Design Decisions
 
