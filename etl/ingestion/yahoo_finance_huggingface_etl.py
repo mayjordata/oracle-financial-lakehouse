@@ -71,21 +71,18 @@ class YahooFinanceHuggingFaceETL:
             "stock_profile.parquet",
             "stock_officers.parquet",
             "stock_statement.parquet",
-            "stock_summary.parquet",
             "stock_tailing_eps.parquet",
             "stock_earning_calendar.parquet",
-            "stock_historical_eps.parquet",
             "stock_dividend_events.parquet",
             "stock_split_events.parquet",
-            "stock_earning_estimates.parquet",
-            "stock_revenue_estimates.parquet",
             "stock_earning_call_transcripts.parquet",
             "stock_news.parquet",
             "stock_prices.parquet",
             "stock_revenue_breakdown.parquet",
             "daily_treasury_yield.parquet",
             "exchange_rate.parquet",
-            "stock_shares_outstanding.parquet"
+            "stock_shares_outstanding.parquet",
+            "stock_sec_filing.parquet",
         ]
         
         # Initialize OCI client
